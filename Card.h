@@ -1,18 +1,19 @@
 #ifndef CARD_H
 #define CARD_H
 
-#include "Player.h"
+#include <string>
+
+using namespace std;
 
 class Card {
     public:
         Card();
         bool checkPassGo(); // Check if the player will pass go
-        void payBank(Player &player); // Remove money from players account
+        void payBank(int amount); // Remove money from players account
         void setMessage(string message) { this->message = message; }
         string getMessage() { return this->message; }
     private:
         string message;
-        Player player; // The player who picked up the card
 };
 
 class Advance : public Card {
@@ -27,8 +28,7 @@ class Advance : public Card {
 class AdvanceUtility : public Card {
     public:
         AdvanceUtility(int multiplier);
-        int findNextUtility(Player player); // Find index of next utility
-        Player findUtilityOwner(); // Find owner of next utility, NULL if no one owns it
+        int findNextUtility(); // Find index of next utility
     private:
         int multiplier; // The multiplier to replace tile multiplier
 };
@@ -36,8 +36,7 @@ class AdvanceUtility : public Card {
 class AdvanceRailroad : public Card {
     public:
         AdvanceRailroad(int multiplier);
-        int findNextRailroad(int currentLocation); // Find index of next railroad
-        Player findRailroadOwner(); // Find owner of next railroad, NULL if no one owns it
+        int findNextRailroad(); // Find index of next railroad
     private:
         int multiplier; // What to multiply cost by
 };
@@ -45,7 +44,7 @@ class AdvanceRailroad : public Card {
 class BankPay : public Card {
     public:
         BankPay(int amount);
-        void payPlayer(Player &player); // Add money from bank to player
+        void payPlayer(); // Add money from bank to player
     private:
         int amount;
 };
@@ -68,13 +67,13 @@ class GoToJail : public Card {
     public:
         GoToJail();
     private:
-        int location; // Move player to jail tile
+        int locationIndex; // Move player to jail tile
 };
 
 class Repairs : public Card {
     public:
         Repairs(int housePrice, int hotelPrice);
-        int calculateCost(Player &player); // Calculate cost of repairs, each house pay $25, each hotel pay $100
+        int calculateCost(); // Calculate cost of repairs
     private:
         int housePrice;
         int hotelPrice;
