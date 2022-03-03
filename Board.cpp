@@ -1,8 +1,8 @@
 #include "Board.h"
 
-Board::Board(int numPlayers, Player players[]) {
-    this->numPlayers = numPlayers;
+Board::Board() {
     this->currentPlayer = 0;
+    setUpBoard();
 }
 
 void Board::setUpBoard() {
@@ -11,6 +11,9 @@ void Board::setUpBoard() {
     createCards(chanceFile, chanceDeck);
     createCards(communityChestFile, communityChestDeck);
 }
+
+// Initialize pointer to zero so that it can be initialized in first call to getInstance
+Board *Board::instance = 0;
 
 
 /**

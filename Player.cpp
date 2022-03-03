@@ -6,6 +6,7 @@ Player::Player() {
     this->balance = 2000;
     this->currentLocation = 0;
     this->jailed = false;
+    this->getOutOfJail = 0;
 }
 
 Player::Player(string name) {
@@ -14,8 +15,13 @@ Player::Player(string name) {
     this->balance = 2000;
     this->currentLocation = 0;
     this->jailed = false;
+    this->getOutOfJail = 0;
 }
 
 void Player::setYou() {
     this->you = true;
+}
+
+void Player::movePlayer(string tileName) {
+    
 }

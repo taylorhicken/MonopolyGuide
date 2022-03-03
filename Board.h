@@ -18,12 +18,20 @@ const int MAX_PLAYERS = 6;
 
 class Board {
     public:
-        Board(int numPlayers, Player players[]);
         void createProperties(string propertyFile);
         void createTiles(string tileFile);
         void createCards(string inputFile, vector<Card> &deck);
         void setUpBoard();
+        static Board *getInstance() {
+            if(!instance) {
+                instance = new Board;
+            }
+            return instance;
+        }
+        void setNumPlayers(int numPlayers) { this->numPlayers = numPlayers; }
     private:
+        static Board *instance;
+        Board();
         int numPlayers;
         int currentPlayer;
         Player players[MAX_PLAYERS];

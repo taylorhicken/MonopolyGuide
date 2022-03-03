@@ -35,8 +35,12 @@ int main() {
         players[i] = player;
 
     }
-    Board board(numPlayers, players);
-    board.setUpBoard();
+    cout << "PLAYERS CREATED" << endl;
+    Board *board = board->getInstance(); // Initialize singleton instance
+    board->setNumPlayers(numPlayers);
+    cout << "BOARD INITIALIZED" << endl;
+
+
 
     return 0;
 }

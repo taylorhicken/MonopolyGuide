@@ -10,8 +10,8 @@ class Player {
     public:
         Player();
         Player(string name);
-        void setNextPlayer();
         void setYou();
+        void movePlayer(string tileName);
         
     private:
         string name;
@@ -19,7 +19,8 @@ class Player {
         int currentLocation; // The location on the board
         bool jailed; // If they are in jail or not
         bool you; // If they are the player the guide is trying to help
-        vector<Card> cards; // The cards in their inventory
+        int getOutOfJail; // The number of get out of jail cards they own
+        vector<Property> properties; // The properties the player owns
 };
 
 #endif
