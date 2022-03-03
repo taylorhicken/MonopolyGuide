@@ -3,19 +3,27 @@
 
 #include "Player.h"
 #include "Tile.h"
+#include "Property.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
 
+const int NUM_PROPERTIES = 28;
+const int NUM_TILES = 40;
+const int MAX_PLAYERS = 6;
+
 class Board {
     public:
-        Board(int numPlayers, Player firstPlayer);
+        Board(int numPlayers, Player players[]);
+        void createProperties();
         void createTiles();
     private:
         int numPlayers;
-        Player currentPlayer;
-        Tile tiles[1];
+        int currentPlayer;
+        Player players[MAX_PLAYERS];
+        Property properties[NUM_PROPERTIES];
+        Tile tiles[NUM_TILES];
 };
 
 #endif

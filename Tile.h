@@ -3,21 +3,31 @@
 
 #include <iostream>
 #include <string>
+#include "Property.h"
+#include "Card.h"
 
 using namespace std;
 
 class Tile {
     public:
-        Tile() {};
-        Tile(string propertyName, int id, int price, int mortgagePrice, int housePrice, int rent[]);
+        enum TileType {
+            PROPERTY,
+            TAX,
+            DRAW_CARD,
+            GO,
+            JAIL,
+            GO_TO_JAIL,
+            FREE_PARKING
+        };
+        Tile();
+        Tile(string tileName, Property property, TileType type); // PROPERTIES
+        Tile(string tileName, int tax, TileType type); // INCOME TAX OR LUXURY TAX
+        Tile(string tileName, TileType type); // CORNER TILES, COMMUNITY CHEST, OR CHANCE
     private:
-        string propertyName;
-        int id;
-        int price;
-        int mortgagePrice;
-        int housePrice;
-        int rent[10]; // [Normal, Monopoly, 1 House, 2 House, 3 House, 4 House, Hotel, 2 Railroad, 3 Railroad, 4 Railroad] 
-
+        string tileName;
+        Property property;
+        int tax;
+        TileType type;
 };
 
 #endif
