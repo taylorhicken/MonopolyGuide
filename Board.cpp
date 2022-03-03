@@ -192,4 +192,19 @@ void Board::createTiles(string tileFile) {
     }
 }
 
+/**
+ * @brief Return the index of the tile given the name
+ * 
+ * @param name - Uppercase no space or other character tile name
+ * @return int - The index of the tile
+ */
+int Board::getIndexFromTileName(string name) {
+    for(int i = 0; i < NUM_TILES; i++) {
+        if(name == tiles[i].getName()) {
+            return i;
+        }
+    }
+    return -1;      
+}
+
 

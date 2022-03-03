@@ -28,6 +28,7 @@ class Board {
             }
             return instance;
         }
+        int getIndexFromTileName(string name);
         void setNumPlayers(int numPlayers) { this->numPlayers = numPlayers; }
     private:
         static Board *instance;

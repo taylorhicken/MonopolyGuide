@@ -23,6 +23,7 @@ class Tile {
         Tile(string tileName, Property property, TileType type); // PROPERTIES
         Tile(string tileName, int tax, TileType type); // INCOME TAX OR LUXURY TAX
         Tile(string tileName, TileType type); // CORNER TILES, COMMUNITY CHEST, OR CHANCE
+        string getName() { return tileName; }
     private:
         string tileName;
         Property property;
