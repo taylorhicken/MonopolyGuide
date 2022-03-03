@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "Card.h"
+#include "Property.h"
 #include <vector>
 #include <string>
 using namespace std;
