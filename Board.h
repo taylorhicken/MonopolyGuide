@@ -11,6 +11,8 @@
 #include <vector>
 using namespace std;
 
+class Player;
+
 const int NUM_PROPERTIES = 28;
 const int NUM_TILES = 40;
 const int NUM_CARDS = 16;
@@ -35,7 +37,7 @@ class Board {
         Board();
         int numPlayers;
         int currentPlayer;
-        Player players[MAX_PLAYERS];
+        vector<Player> players;
         Property properties[NUM_PROPERTIES];
         Tile tiles[NUM_TILES];
         vector<Card> chanceDeck;

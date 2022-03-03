@@ -8,6 +8,8 @@
 #include <string>
 using namespace std;
 
+class Board;
+
 class Player {
     public:
         Player();
@@ -15,6 +17,7 @@ class Player {
         void setYou();
         void movePlayer(string tileName);
         bool passedGo(int newLocation);
+        void addMoney(int amount);
         
     private:
         string name;
@@ -24,7 +27,7 @@ class Player {
         bool you; // If they are the player the guide is trying to help
         int getOutOfJail; // The number of get out of jail cards they own
         vector<Property> properties; // The properties the player owns
-        Board *board = board->getInstance();
+        Board *board;
 };
 
 #endif

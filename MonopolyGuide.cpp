@@ -14,7 +14,7 @@ int main() {
     }
 
     // Create each player
-    Player players[numPlayers];
+    vector<Player> players;
     bool setYou = false;
     for(int i = 0; i < numPlayers; i++) {
         cout << "What is the name of player " << i+1 << "?" << endl;
@@ -32,15 +32,13 @@ int main() {
                 setYou = true;
             }
         }
-        players[i] = player;
+        players.push_back(player);
 
     }
     cout << "PLAYERS CREATED" << endl;
     Board *board = board->getInstance(); // Initialize singleton instance
     board->setNumPlayers(numPlayers);
     cout << "BOARD INITIALIZED" << endl;
-
-
 
     return 0;
 }

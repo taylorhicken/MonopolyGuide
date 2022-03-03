@@ -7,6 +7,7 @@ Player::Player() {
     this->currentLocation = 0;
     this->jailed = false;
     this->getOutOfJail = 0;
+    board = board->getInstance();
 }
 
 Player::Player(string name) {
@@ -16,8 +17,13 @@ Player::Player(string name) {
     this->currentLocation = 0;
     this->jailed = false;
     this->getOutOfJail = 0;
+    board = board->getInstance();
 }
 
+/**
+ * @brief Mark the player as "YOU" i.e. the person trying to use MonopolyGuide
+ * 
+ */
 void Player::setYou() {
     this->you = true;
 }
@@ -44,8 +50,11 @@ bool Player::passedGo(int newLocation) {
 void Player::movePlayer(string tileName) {
     int newLocation = board->getIndexFromTileName(tileName);
 
-    if(passedGo(newLocation)) {
-
+    if(passedGo(newLocation) && !jailed) {
+        addMoney(200);
     }
-    
+}
+
+void Player::addMoney(int amount) {
+    this->balance += amount;
 }
