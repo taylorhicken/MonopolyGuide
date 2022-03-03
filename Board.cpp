@@ -3,19 +3,22 @@
 Board::Board(int numPlayers, Player players[]) {
     this->numPlayers = numPlayers;
     this->currentPlayer = 0;
-    createProperties();
-    createTiles();
+}
+
+void Board::setUpBoard() {
+    createProperties(propertyFile);
+    createTiles(tileFile);
     createCards(chanceFile, chanceDeck);
     createCards(communityChestFile, communityChestDeck);
 }
+
 
 /**
  * @brief Reads in card file and creates Card objects for each
  * 
  * @param inputFile - The file to read
- * @param deck - the card array to store cards in
  */
-void createCards(string inputFile, vector<Card> &deck) {
+void Board::createCards(string inputFile, vector<Card> &deck) {
     ifstream cardInput(inputFile);
     string type;
     for(int i = 0; i < NUM_CARDS; i++) {
@@ -110,7 +113,7 @@ void createCards(string inputFile, vector<Card> &deck) {
  * @brief Reads in property file and creates Property objects for each
  * 
  */
-void Board::createProperties() {
+void Board::createProperties(string propertyFile) {
     ifstream propertyInput(propertyFile);
     int columns;
      propertyInput >> columns;
@@ -147,7 +150,7 @@ void Board::createProperties() {
  * @brief Reads in tile file and creates Tile objects for each
  * 
  */
-void Board::createTiles() {
+void Board::createTiles(string tileFile) {
     ifstream tileInput(tileFile);
     for(int i = 0; i < NUM_TILES; i++) {
         string name;

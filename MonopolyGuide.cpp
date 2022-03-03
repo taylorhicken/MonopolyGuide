@@ -36,8 +36,7 @@ int main() {
 
     }
     Board board(numPlayers, players);
-
-
+    board.setUpBoard();
 
     return 0;
 }
