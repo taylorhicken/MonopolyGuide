@@ -15,9 +15,10 @@ class Player {
         Player();
         Player(string name);
         void setYou();
-        void movePlayer(string tileName);
+        void movePlayerTo(string tileName);
+        void movePlayerXSpaces(int spaces);
         bool passedGo(int newLocation);
-        void addMoney(int amount);
+        void updateMoney(int amount);
         
     private:
         string name;

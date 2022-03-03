@@ -8,7 +8,7 @@ int main() {
     cout << "Welcome to Monopoly Guide" << endl;
     // Get number of players
     int numPlayers = MAX_PLAYERS + 1;
-    while(numPlayers > MAX_PLAYERS) {
+    while(numPlayers > MAX_PLAYERS || numPlayers < 2) {
         cout << "How many players will be playing?" << endl;
         cin >> numPlayers;
     }
@@ -38,6 +38,7 @@ int main() {
     cout << "PLAYERS CREATED" << endl;
     Board *board = board->getInstance(); // Initialize singleton instance
     board->setNumPlayers(numPlayers);
+    board->addPlayers(players);
     cout << "BOARD INITIALIZED" << endl;
 
     return 0;

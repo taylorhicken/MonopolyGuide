@@ -47,14 +47,37 @@ bool Player::passedGo(int newLocation) {
  * 
  * @param tileName - Uppercase no space tile name
  */
-void Player::movePlayer(string tileName) {
+void Player::movePlayerTo(string tileName) {
     int newLocation = board->getIndexFromTileName(tileName);
 
-    if(passedGo(newLocation) && !jailed) {
-        addMoney(200);
+    if(newLocation == 0) {
+        updateMoney(400); // Collect $400 salary
+    } else if(passedGo(newLocation) && !jailed) {
+        updateMoney(200); // Collect $200 salary
     }
+    this->currentLocation = newLocation;
 }
 
-void Player::addMoney(int amount) {
+/**
+ * @brief Move player ahead X spaces
+ * 
+ * @param spaces - the number of spaces to move forward
+ */
+void Player::movePlayerXSpaces(int spaces) {
+    int newLocation = (this->currentLocation + spaces) % NUM_TILES;
+    if(newLocation == 0) {
+        updateMoney(400); // Collect $400 salary
+    } else if(passedGo(newLocation) && !jailed) {
+        updateMoney(200); // Collect $200 salary
+    }
+    this->currentLocation = newLocation;
+}
+
+/**
+ * @brief Update the player's balance
+ * 
+ * @param amount The amount to change (positive for add, negative for subtract)
+ */
+void Player::updateMoney(int amount) {
     this->balance += amount;
 }

@@ -15,6 +15,10 @@ void Board::setUpBoard() {
 // Initialize pointer to zero so that it can be initialized in first call to getInstance
 Board *Board::instance = 0;
 
+void Board::addPlayers(vector<Player> players) {
+    this->players = players;
+}
+
 
 /**
  * @brief Reads in card file and creates Card objects for each

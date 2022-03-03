@@ -32,6 +32,7 @@ class Board {
         }
         int getIndexFromTileName(string name);
         void setNumPlayers(int numPlayers) { this->numPlayers = numPlayers; }
+        void addPlayers(vector<Player> players);
     private:
         static Board *instance;
         Board();
@@ -44,8 +45,8 @@ class Board {
         vector<Card> communityChestDeck;
         const string propertyFile = "properties.txt";
         const string tileFile = "tiles.txt";
-        string chanceFile = "chance.txt";
-        string communityChestFile = "communitychest.txt";
+        const string chanceFile = "chance.txt";
+        const string communityChestFile = "communitychest.txt";
 };
 
 #endif
