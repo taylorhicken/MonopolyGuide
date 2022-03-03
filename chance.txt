@@ -1,10 +1,32 @@
-ADVANCE BOARDWALK 0
-ADVANCE GO 0
-ADVANCE ILLINOISAVENUE 0
-ADVANCE STCHARLESPLACE 0
-ADVANCE NEARESTRAILROAD 0
-ADVANCE NEARESTUTILITY 0
-BANK NULL 50
-GETOUTOFJAIL NULL 0
-GOBACKTHREE NULL 0
-GOTOJAIL JAIL 0
+ADVANCE BOARDWALK
+Advance to Boardwalk
+ADVANCE GO
+Advance to Go (Collect $200)
+ADVANCE ILLINOISAVENUE
+Advance to Illinois Avenue. If you pass Go, collect $200
+ADVANCE STCHARLESPLACE
+Advance to St. Charles Place. If you pass Go, collect $200
+ADVANCE_RAILROAD 2
+Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay owner twice the rental to which they are otherwise entitled
+ADVANCE_RAILROAD 2
+Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay owner twice the rental to which they are otherwise entitled
+ADVANCE_UTILITY 10
+Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times amount thrown
+BANKPAY 50
+Bank pays you a dividend of $50
+GETOUTOFJAIL
+Get Out of Jail Free
+GOBACKTHREE
+Go Back 3 Spaces
+GOTOJAIL
+Go to Jail. Go directly to Jail, do not pass Go, do not collect $200
+REPAIRS 25 100
+Make general repairs on all your property. For each house pay $25. For each hotel pay $100
+FINE 15
+Speeding fine $15
+ADVANCE READINGRAILROAD
+Take a trip to Reading Railroad. If you pass Go, collect $200
+PAYEACHPLAYER 50
+You have been elected Chairman of the Board. Pay each player $50
+BANKPAY 150
+Your building loan matures. Collect $150

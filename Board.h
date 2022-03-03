@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 const int NUM_PROPERTIES = 28;
@@ -18,6 +19,7 @@ class Board {
         Board(int numPlayers, Player players[]);
         void createProperties();
         void createTiles();
+        void createCards(string inputFile, vector<Card> &deck);
     private:
         int numPlayers;
         int currentPlayer;

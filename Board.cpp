@@ -1,12 +1,100 @@
 #include "Board.h"
 string propertyFile = "properties.txt";
 string tileFile = "tiles.txt";
+string chanceFile = "chance.txt";
+string communityChestFile = "communitychest.txt";
 
 Board::Board(int numPlayers, Player players[]) {
     this->numPlayers = numPlayers;
     this->currentPlayer = 0;
     createProperties();
     createTiles();
+}
+
+
+/**
+ * @brief Reads in card file and creates Card objects for each
+ * 
+ * @param inputFile - The file to read
+ * @param deck - the card array to store cards in
+ */
+void createCards(string inputFile, vector<Card> &deck) {
+    ifstream cardInput(inputFile);
+    string type;
+    cardInput >> type;
+    if(type == "ADVANCE") {
+        string location, message;
+        cardInput >> location;
+        getline(cardInput, message);
+        Advance card(location);
+        deck.push_back(card);
+    } else if(type == "ADVANCE_RAILROAD") {
+        int multiplier;
+        string message;
+        cardInput >> multiplier;
+        getline(cardInput, message);
+        AdvanceRailroad card(multiplier);
+        deck.push_back(card);
+    } else if(type == "ADVANCE_UTILITY") {
+        int multiplier;
+        string message;
+        cardInput >> multiplier;
+        getline(cardInput, message);
+        AdvanceUtility card(multiplier);
+        deck.push_back(card);
+    } else if(type == "BANKPAY") {
+        int amount;
+        string message;
+        cardInput >> amount;
+        getline(cardInput, message);
+        BankPay card(amount);
+        deck.push_back(card);
+    } else if(type == "GETOUTOFJAIL") {
+        string message;
+        getline(cardInput, message);
+        GetOutOfJail card;
+        deck.push_back(card);
+    } else if(type == "GOBACKTHREE") {
+        string message;
+        getline(cardInput, message);
+        GoBackThree card;
+        deck.push_back(card);
+    } else if(type == "GOTOJAIL") {
+        string message;
+        getline(cardInput, message);
+        GoToJail card;
+        deck.push_back(card);
+    } else if(type == "REPAIRS") {
+        int housePrice, hotelPrice;
+        string message;
+        cardInput >> housePrice;
+        cardInput >> hotelPrice;
+        getline(cardInput, message);
+        Repairs card(housePrice, hotelPrice);
+        deck.push_back(card);
+    } else if(type == "FINE") {
+        int amount;
+        string message;
+        cardInput >> amount;
+        getline(cardInput, message);
+        Fine card(amount);
+        deck.push_back(card);
+    } else if(type == "PAYEACHPLAYER") {
+        int amount;
+        string message;
+        cardInput >> amount;
+        getline(cardInput, message);
+        PayEachPlayer card(amount);
+        deck.push_back(card);
+    } else if(type == "FINEEACHPLAYER") {
+        int amount;
+        string message;
+        cardInput >> amount;
+        getline(cardInput, message);
+        FineEachPlayer card(amount);
+        deck.push_back(card);
+    }
+
 }
 
 /**
