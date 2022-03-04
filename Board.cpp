@@ -230,9 +230,51 @@ void Board::generateProbabilityMatrix() {
  * For testing only
  */
 void Board::printProbabilityMatrix() {
+    cout << "                     "<< setw(6) << 
+    "GO" << "   " <<
+    "MEDIT" << "   " <<
+    "COMMU" << "   " <<
+    "BALTI" << "   " <<
+    "INCOM" << "   " <<
+    "READI" << "   " <<
+    "ORIEN" << "   " <<
+    "CHANC" << "   " <<
+    "VERMO" << "   " <<
+    "CONNE" << "   " <<
+    "JAIL" << "   " <<
+    "STCHA" << "   " <<
+    "ELECT" << "   " <<
+    "STATE" << "   " <<
+    "VIRGI" << "   " <<
+    "PENNS" << "   " <<
+    "STJAM" << "   " <<
+    "COMMU" << "   " <<
+    "TENNE" << "   " <<
+    "NEWYO" << "   " <<
+    "FREEP" << "   " <<
+    "KENTU" << "   " <<
+    "CHANC" << "   " <<
+    "INDIA" << "   " <<
+    "ILLIN" << "   " <<
+    "B&ORA" << "   " <<
+    "ATLAN" << "   " <<
+    "VENTN" << "   " <<
+    "WATER" << "   " <<
+    "MARVI" << "   " <<
+    "GOTOJ" << "   " <<
+    "PACIF" << "   " <<
+    "NORTH" << "   " <<
+    "COMMU" << "   " <<
+    "PENNS" << "   " <<
+    "SHORT" << "   " <<
+    "CHANC" << "   " <<
+    "PARKP" << "   " <<
+    "LUXUR" << "   " <<
+    "BOARD" << endl;
     for(int i = 0; i < NUM_TILES; i++) {
+        cout << setw(21) << tiles[i].getName() << " ";
         for(int j = 0; j < NUM_TILES; j++) {
-            cout << setw(5) << setprecision(2) << probabilityMatrix[i][j] << " ";
+            cout << setw(7) << setprecision(2) << probabilityMatrix[i][j] << " ";
         }
         cout << endl;
     }
@@ -247,21 +289,22 @@ void Board::printProbabilityMatrix() {
 float Board::getRollProbability(int x) {
     float total = 0; // Total probability of rolling on this square
     // Domain of function
-    if(x > 1 && x < 25) {
+    if(x >= 2 && x <= 12) {
         total += (-abs(x - 7.0) + 6.0) / 36.0;
     }
-    if(x > 4) {
+    // Add on 2nd roll probabilities
+    if(x >= 5 && x <= 24) {
         // Even
         if(x % 2 == 0) {
-            for(int i = 0; i <= 12; i += 2) {
-                if(i < x && (x - 2*i) <= 6) {
+            for(int i = 2; i <= 12; i += 2) {
+                if(i < x && (x - 2*i) <= 12) {
                     total += (getRollProbability(i) / 36.0);
                 }
             }
         // Odd
         } else {
-            for(int i = 3; i <= 11; i += 2) {
-                if(i < x && (x - 2*i) <= 6) {
+            for(int i = 0; i <= 11; i += 2) {
+                if(i < x && (x - 2*i) <= 12) {
                     total += (getRollProbability(i) / 36.0);
                 }
             }
