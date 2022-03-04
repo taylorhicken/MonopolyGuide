@@ -211,4 +211,66 @@ int Board::getIndexFromTileName(string name) {
     return -1;      
 }
 
+/**
+ * @brief Create a matrix NUM_TILES x NUM_TILES and initialize with probabilities
+ */
+void Board::generateProbabilityMatrix() {
+    for(int i = 0; i < NUM_TILES; i++) {
+        vector<float> probRow;
+        for(int j = 0; j < NUM_TILES; j++) {
+            // Add probability roll dice and land on the square
+            probRow.push_back(getRollProbability(j));
+        }
+        probabilityMatrix.push_back(probRow);
+    }
+}
+
+/**
+ * @brief Print out probability matrix
+ * For testing only
+ */
+void Board::printProbabilityMatrix() {
+    for(int i = 0; i < NUM_TILES; i++) {
+        for(int j = 0; j < NUM_TILES; j++) {
+            cout << setw(5) << setprecision(2) << probabilityMatrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+/**
+ * @brief Calculates the probability of landing on the square X spots away
+ * y = -|x-7|+6
+ * @param x - The distance from the starting location
+ * @return double - The probability of landing on the square x spots away
+ */
+float Board::getRollProbability(int x) {
+    float total = 0; // Total probability of rolling on this square
+    // Domain of function
+    if(x > 1 && x < 25) {
+        total += (-abs(x - 7.0) + 6.0) / 36.0;
+    }
+    if(x > 4) {
+        // Even
+        if(x % 2 == 0) {
+            for(int i = 0; i <= 12; i += 2) {
+                if(i < x && (x - 2*i) <= 6) {
+                    total += (getRollProbability(i) / 36.0);
+                }
+            }
+        // Odd
+        } else {
+            for(int i = 3; i <= 11; i += 2) {
+                if(i < x && (x - 2*i) <= 6) {
+                    total += (getRollProbability(i) / 36.0);
+                }
+            }
+        }
+    }
+    if(total > 0) {
+        return total;
+    }
+    return 0.0;
+}
+
 

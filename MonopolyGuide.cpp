@@ -41,5 +41,9 @@ int main() {
     board->addPlayers(players);
     cout << "BOARD INITIALIZED" << endl;
 
+    board->generateProbabilityMatrix();
+    board->printProbabilityMatrix();
+    cout << "PROBABILITIES INITIALIZED" << endl;
+    
     return 0;
 }

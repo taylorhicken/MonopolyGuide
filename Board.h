@@ -9,6 +9,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cmath>
+#include <iomanip>
 using namespace std;
 
 class Player;
@@ -33,6 +35,9 @@ class Board {
         int getIndexFromTileName(string name);
         void setNumPlayers(int numPlayers) { this->numPlayers = numPlayers; }
         void addPlayers(vector<Player> players);
+        void generateProbabilityMatrix();
+        float getRollProbability(int roll);
+        void printProbabilityMatrix();
     private:
         static Board *instance;
         Board();
@@ -47,6 +52,7 @@ class Board {
         const string tileFile = "tiles.txt";
         const string chanceFile = "chance.txt";
         const string communityChestFile = "communitychest.txt";
+        vector<vector<float>> probabilityMatrix;
 };
 
 #endif
